@@ -1,0 +1,40 @@
+Uri: https://sint.gg/
+File Name: C:\Downloaded Web Sites\sint.gg\index.htm
+Content Type: text/html
+
+Uri: https://sint.gg/assets/index-BTDLedYF.js
+File Name: C:\Downloaded Web Sites\sint.gg\assets\index-BTDLedYF.js
+Content Type: application/javascript
+
+Uri: https://sint.gg/assets/index-DW2GRvq3.css
+File Name: C:\Downloaded Web Sites\sint.gg\assets\index-DW2GRvq3.css
+Content Type: text/css
+
+Uri: https://sint.gg/assets/revicons-BNIKeAUC.eot
+File Name: C:\Downloaded Web Sites\sint.gg\assets\revicons-BNIKeAUC.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://sint.gg/assets/revicons-CBqxZnew.ttf
+File Name: C:\Downloaded Web Sites\sint.gg\assets\revicons-CBqxZnew.ttf
+Content Type: application/octet-stream
+
+Uri: https://sint.gg/assets/revicons-DbTteTvA.woff
+File Name: C:\Downloaded Web Sites\sint.gg\assets\revicons-DbTteTvA.woff
+Content Type: font/woff
+
+Uri: https://sint.gg/favicon.ico
+File Name: C:\Downloaded Web Sites\sint.gg\favicon.ico
+Content Type: image/x-icon
+
+Uri: https://sint.gg/favicon.png
+File Name: C:\Downloaded Web Sites\sint.gg\favicon.png
+Content Type: image/png
+
+Uri: https://sint.gg/favicon.svg
+File Name: C:\Downloaded Web Sites\sint.gg\favicon.svg
+Content Type: image/svg+xml
+
+Uri: https://www.googletagmanager.com/gtag/js?id=G-B0VZ5QKXYN
+File Name: C:\Downloaded Web Sites\sint.gg\gtag\js
+Content Type: application/javascript
+

@@ -1,0 +1,133 @@
+docca-drab.vercel.app/:1 Refused to execute script from 'https://docca-drab.vercel.app/gtag/js?id=G-B0VZ5QKXYN' because its MIME type ('application/octet-stream') is not executable, and strict MIME type checking is enabled.
+index-BTDLedYF.js:33 
+            
+            
+           GET https://docca-drab.vercel.app/video/preview.webp 404 (Not Found)
+st @ index-BTDLedYF.js:33
+zh @ index-BTDLedYF.js:40
+Ah @ index-BTDLedYF.js:40
+Ch @ index-BTDLedYF.js:40
+qh @ index-BTDLedYF.js:40
+bf @ index-BTDLedYF.js:40
+Eh @ index-BTDLedYF.js:40
+xt @ index-BTDLedYF.js:25
+Dt @ index-BTDLedYF.js:25
+docca-drab.vercel.app/:86 
+            
+            
+           GET https://docca-drab.vercel.app/assets/TitilliumWeb-Regular-BNW2HhQP.ttf net::ERR_ABORTED 404 (Not Found)
+index-BTDLedYF.js:788 
+            
+            
+           GET https://docca-drab.vercel.app/model/draco/SINT_desktop.glb 404 (Not Found)
+load @ index-BTDLedYF.js:788
+load @ index-BTDLedYF.js:4571
+St @ index-BTDLedYF.js:4572
+(anonymous) @ index-BTDLedYF.js:4572
+(anonymous) @ index-BTDLedYF.js:4572
+vf @ index-BTDLedYF.js:40
+xh @ index-BTDLedYF.js:40
+yh @ index-BTDLedYF.js:40
+Wh @ index-BTDLedYF.js:40
+Yh @ index-BTDLedYF.js:40
+ic @ index-BTDLedYF.js:40
+Eh @ index-BTDLedYF.js:40
+xt @ index-BTDLedYF.js:25
+Dt @ index-BTDLedYF.js:25
+index-BTDLedYF.js:4606 Error loading model or textures: Error: fetch for "https://docca-drab.vercel.app/model/draco/SINT_desktop.glb" responded with 404: 
+overrideMethod @ hook.js:608
+console.error @ index-BTDLedYF.js:4606
+(anonymous) @ index-BTDLedYF.js:4572
+await in (anonymous)
+(anonymous) @ index-BTDLedYF.js:4572
+vf @ index-BTDLedYF.js:40
+xh @ index-BTDLedYF.js:40
+yh @ index-BTDLedYF.js:40
+Wh @ index-BTDLedYF.js:40
+Yh @ index-BTDLedYF.js:40
+ic @ index-BTDLedYF.js:40
+Eh @ index-BTDLedYF.js:40
+xt @ index-BTDLedYF.js:25
+Dt @ index-BTDLedYF.js:25
+index-BTDLedYF.js:4786 MODEL is not yet loaded
+index-BTDLedYF.js:788 
+            
+            
+           GET https://docca-drab.vercel.app/textures/hdri/Atelier_hdr_512.hdr 404 (Not Found)
+load @ index-BTDLedYF.js:788
+load @ index-BTDLedYF.js:788
+load @ index-BTDLedYF.js:4719
+(anonymous) @ index-BTDLedYF.js:4606
+(anonymous) @ index-BTDLedYF.js:4606
+(anonymous) @ index-BTDLedYF.js:4606
+query @ index-BTDLedYF.js:4580
+suspend @ index-BTDLedYF.js:4580
+useLoader @ index-BTDLedYF.js:4606
+useEnvironment @ index-BTDLedYF.js:4752
+EnvironmentCube @ index-BTDLedYF.js:4752
+nl @ index-BTDLedYF.js:4600
+Du @ index-BTDLedYF.js:4602
+Iu @ index-BTDLedYF.js:4602
+rf @ index-BTDLedYF.js:4602
+Zl @ index-BTDLedYF.js:4602
+us @ index-BTDLedYF.js:4602
+xt @ index-BTDLedYF.js:4588
+Dt @ index-BTDLedYF.js:4588
+index-BTDLedYF.js:4606 Error: Could not load /textures/hdri/Atelier_hdr_512.hdr: fetch for "https://docca-drab.vercel.app/textures/hdri/Atelier_hdr_512.hdr" responded with 404: 
+    at Object.onError (index-BTDLedYF.js:4606:25600)
+    at index-BTDLedYF.js:788:147517
+overrideMethod @ hook.js:608
+console.error @ index-BTDLedYF.js:4606
+Ac @ index-BTDLedYF.js:4602
+Pc.Nt.componentDidCatch._t.callback @ index-BTDLedYF.js:4602
+Hu @ index-BTDLedYF.js:4600
+bu @ index-BTDLedYF.js:4602
+Gl @ index-BTDLedYF.js:4602
+Vl @ index-BTDLedYF.js:4602
+of @ index-BTDLedYF.js:4602
+fo @ index-BTDLedYF.js:4602
+us @ index-BTDLedYF.js:4602
+xt @ index-BTDLedYF.js:4588
+Dt @ index-BTDLedYF.js:4588
+index-BTDLedYF.js:4606 Error: Could not load /textures/hdri/Atelier_hdr_512.hdr: fetch for "https://docca-drab.vercel.app/textures/hdri/Atelier_hdr_512.hdr" responded with 404: 
+    at Object.onError (index-BTDLedYF.js:4606:25600)
+    at index-BTDLedYF.js:788:147517
+overrideMethod @ hook.js:608
+console.error @ index-BTDLedYF.js:4606
+Nt @ index-BTDLedYF.js:40
+gt.callback @ index-BTDLedYF.js:40
+hl @ index-BTDLedYF.js:38
+xh @ index-BTDLedYF.js:40
+yh @ index-BTDLedYF.js:40
+Wh @ index-BTDLedYF.js:40
+Yh @ index-BTDLedYF.js:40
+ic @ index-BTDLedYF.js:40
+Eh @ index-BTDLedYF.js:40
+xt @ index-BTDLedYF.js:25
+Dt @ index-BTDLedYF.js:25
+index-BTDLedYF.js:4606 Uncaught Error: Could not load /textures/hdri/Atelier_hdr_512.hdr: fetch for "https://docca-drab.vercel.app/textures/hdri/Atelier_hdr_512.hdr" responded with 404: 
+    at Object.onError (index-BTDLedYF.js:4606:25600)
+    at index-BTDLedYF.js:788:147517
+(anonymous) @ index-BTDLedYF.js:4606
+(anonymous) @ index-BTDLedYF.js:788
+Promise.catch
+load @ index-BTDLedYF.js:788
+load @ index-BTDLedYF.js:788
+load @ index-BTDLedYF.js:4719
+(anonymous) @ index-BTDLedYF.js:4606
+(anonymous) @ index-BTDLedYF.js:4606
+(anonymous) @ index-BTDLedYF.js:4606
+query @ index-BTDLedYF.js:4580
+suspend @ index-BTDLedYF.js:4580
+useLoader @ index-BTDLedYF.js:4606
+useEnvironment @ index-BTDLedYF.js:4752
+EnvironmentCube @ index-BTDLedYF.js:4752
+nl @ index-BTDLedYF.js:4600
+Du @ index-BTDLedYF.js:4602
+Iu @ index-BTDLedYF.js:4602
+rf @ index-BTDLedYF.js:4602
+Zl @ index-BTDLedYF.js:4602
+us @ index-BTDLedYF.js:4602
+xt @ index-BTDLedYF.js:4588
+Dt @ index-BTDLedYF.js:4588
+index-BTDLedYF.js:4571 THREE.WebGLRenderer: Context Lost.
