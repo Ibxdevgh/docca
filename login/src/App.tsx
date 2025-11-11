@@ -265,7 +265,14 @@ const DoccaBetaSignup = () => {
               {/* Additional Info */}
               <div className="mt-8 text-center">
                 <p className="text-purple-400/60 text-xs">
-                  By applying, you agree to our terms and privacy policy
+                  By applying, you agree to our{" "}
+                  <a href="/terms-of-use.html" className="text-purple-400 hover:text-purple-300 underline transition-colors">
+                    Terms of Use
+                  </a>
+                  {" "}and{" "}
+                  <a href="/privacy-policy.html" className="text-purple-400 hover:text-purple-300 underline transition-colors">
+                    Privacy Policy
+                  </a>
                 </p>
               </div>
             </div>

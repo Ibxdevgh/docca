@@ -10,5 +10,116 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Inject Terms and Privacy Policy links into the apply modal
+      (function() {
+        const processedElements = new WeakSet();
+        
+        function createLink(text, href) {
+          const link = document.createElement('a');
+          link.href = href;
+          link.textContent = text;
+          link.style.color = 'rgb(167, 139, 250)'; // purple-400
+          link.style.textDecoration = 'underline';
+          link.style.transition = 'color 0.2s';
+          link.onmouseover = () => link.style.color = 'rgb(192, 132, 252)'; // purple-300
+          link.onmouseout = () => link.style.color = 'rgb(167, 139, 250)'; // purple-400
+          return link;
+        }
+        
+        function injectPolicyLinks() {
+          // Look for text containing terms/privacy references
+          const allElements = document.querySelectorAll('*');
+          
+          allElements.forEach(element => {
+            if (processedElements.has(element)) return;
+            if (element.querySelector('a[href*="terms"], a[href*="privacy"]')) {
+              processedElements.add(element);
+              return;
+            }
+            
+            const text = element.textContent || '';
+            const innerHTML = element.innerHTML || '';
+            
+            // Check if element contains terms/privacy text
+            if (text.match(/\b(terms|privacy|agree)\b/i)) {
+              
+              // Try to replace common patterns
+              let updated = innerHTML;
+              let changed = false;
+              
+              // Pattern 1: "terms and privacy policy" or "terms & privacy"
+              if (text.match(/terms.*(and|&).*privacy/i)) {
+                updated = updated.replace(
+                  /\bterms\b(.*?)\bprivacy\s*policy\b/gi,
+                  '<a href="/terms-of-use.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Terms of Use</a>$1<a href="/privacy-policy.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Privacy Policy</a>'
+                );
+                changed = true;
+              }
+              
+              // Pattern 2: "terms of use" standalone
+              if (text.match(/\bterms\s*(of\s*use)?\b/i) && !innerHTML.includes('href="/terms-of-use.html"')) {
+                updated = updated.replace(
+                  /\bterms\s*(of\s*use)?\b/gi,
+                  '<a href="/terms-of-use.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Terms of Use</a>'
+                );
+                changed = true;
+              }
+              
+              // Pattern 3: "privacy policy" standalone
+              if (text.match(/\bprivacy\s*policy\b/i) && !innerHTML.includes('href="/privacy-policy.html"')) {
+                updated = updated.replace(
+                  /\bprivacy\s*policy\b/gi,
+                  '<a href="/privacy-policy.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Privacy Policy</a>'
+                );
+                changed = true;
+              }
+              
+              // Pattern 4: "agree to our terms and privacy policy"
+              if (text.match(/agree.*(to|with).*terms.*privacy/i)) {
+                updated = updated.replace(
+                  /\bagree\s+(to|with)\s+our\s+terms\s+(and|&)\s+privacy\s+policy/gi,
+                  'agree to our <a href="/terms-of-use.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Terms of Use</a> and <a href="/privacy-policy.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Privacy Policy</a>'
+                );
+                changed = true;
+              }
+              
+              if (changed && updated !== innerHTML) {
+                element.innerHTML = updated;
+                processedElements.add(element);
+              }
+            }
+          });
+        }
+        
+        // Use MutationObserver to watch for DOM changes (React hydration)
+        const observer = new MutationObserver(() => {
+          injectPolicyLinks();
+        });
+        
+        // Start observing
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true
+        });
+        
+        // Initial attempts
+        injectPolicyLinks();
+        
+        // Try after delays for React hydration
+        setTimeout(injectPolicyLinks, 500);
+        setTimeout(injectPolicyLinks, 1000);
+        setTimeout(injectPolicyLinks, 2000);
+        setTimeout(injectPolicyLinks, 3000);
+        
+        // Also try on DOMContentLoaded
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(injectPolicyLinks, 500);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

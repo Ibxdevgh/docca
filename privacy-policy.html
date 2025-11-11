@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — DOCCA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fadeInUp {
+        from { 
+          opacity: 0; 
+          transform: translateY(30px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-black text-white">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 -z-10">
+      <div class="absolute inset-0 opacity-60" id="gradientOverlay"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-500/30 via-violet-500/20 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-indigo-500/30 via-purple-500/20 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-12 animate-fadeIn">
+      <!-- Header -->
+      <div class="text-center mb-12 animate-fadeInUp">
+        <a href="/" class="inline-block mb-6">
+          <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-400 to-purple-300 tracking-wider">
+            DOCCA
+          </h1>
+        </a>
+        <h2 class="text-3xl font-bold text-white mb-4">Privacy Policy</h2>
+        <p class="text-purple-300">Last updated: <span id="lastUpdated"></span></p>
+      </div>
+
+      <!-- Content Card -->
+      <div class="relative">
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-500 via-violet-500 to-purple-500 rounded-2xl blur opacity-30"></div>
+        <div class="relative bg-black/80 backdrop-blur-xl rounded-2xl border border-purple-500/30 p-8 md:p-12 shadow-2xl">
+          <div class="prose prose-invert max-w-none">
+            <div class="space-y-8 text-purple-100">
+              
+              <section class="animate-fadeInUp" style="animation-delay: 0.1s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  1. Introduction
+                </h3>
+                <p class="leading-relaxed">
+                  Welcome to DOCCA ("we," "our," or "us"). DOCCA is a Web3-native platform where users can create, customize, and own AI agents powered by ChatGPT, all backed by Solana NFTs. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform, including our website, services, and applications.
+                </p>
+                <p class="leading-relaxed mt-4">
+                  By using DOCCA, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our services.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.2s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  2. Information We Collect
+                </h3>
+                
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">2.1 Wallet Information</h4>
+                <p class="leading-relaxed">
+                  When you connect your Solana wallet (e.g., Phantom, Backpack), we collect your public wallet address. We do not have access to your private keys, seed phrases, or any other sensitive wallet information.
+                </p>
+
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">2.2 AI Agent Data</h4>
+                <p class="leading-relaxed">
+                  We collect information about your AI agents, including:
+                </p>
+                <ul class="list-disc list-inside ml-4 mt-2 space-y-2">
+                  <li>Agent traits (tone, purpose, personality characteristics)</li>
+                  <li>Agent name and avatar</li>
+                  <li>Chat history and interactions with your AI agent</li>
+                  <li>Agent memory and evolution data</li>
+                  <li>NFT metadata associated with your agent</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">2.3 Usage Information</h4>
+                <p class="leading-relaxed">
+                  We automatically collect certain information about your use of DOCCA, including:
+                </p>
+                <ul class="list-disc list-inside ml-4 mt-2 space-y-2">
+                  <li>Device information (browser type, operating system)</li>
+                  <li>IP address and general location data</li>
+                  <li>Usage patterns and feature interactions</li>
+                  <li>Error logs and performance data</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">2.4 Communication Data</h4>
+                <p class="leading-relaxed">
+                  If you contact us or sign up for beta access, we may collect your email address and any other information you provide in your communications with us.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.3s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  3. How We Use Your Information
+                </h3>
+                <p class="leading-relaxed mb-4">
+                  We use the information we collect to:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                  <li>Provide, maintain, and improve our services</li>
+                  <li>Authenticate your wallet and verify NFT ownership</li>
+                  <li>Generate and personalize your AI agent's behavior and responses</li>
+                  <li>Store and manage your agent's memory and chat history</li>
+                  <li>Process NFT minting and manage on-chain metadata</li>
+                  <li>Send you updates, notifications, and support communications</li>
+                  <li>Analyze usage patterns to enhance user experience</li>
+                  <li>Detect, prevent, and address technical issues and security threats</li>
+                  <li>Comply with legal obligations and enforce our terms</li>
+                </ul>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.4s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  4. Information Sharing and Disclosure
+                </h3>
+                <p class="leading-relaxed mb-4">
+                  We do not sell your personal information. We may share your information only in the following circumstances:
+                </p>
+                
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">4.1 Service Providers</h4>
+                <p class="leading-relaxed">
+                  We may share information with third-party service providers who perform services on our behalf, such as:
+                </p>
+                <ul class="list-disc list-inside ml-4 mt-2 space-y-2">
+                  <li>OpenAI (for ChatGPT API integration)</li>
+                  <li>IPFS storage providers (for NFT metadata)</li>
+                  <li>Blockchain infrastructure providers (for Solana transactions)</li>
+                  <li>Analytics and monitoring services</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">4.2 Blockchain Transparency</h4>
+                <p class="leading-relaxed">
+                  Information stored on the Solana blockchain, including your wallet address and NFT ownership, is publicly accessible and immutable. This is inherent to blockchain technology.
+                </p>
+
+                <h4 class="text-xl font-semibold text-white mt-6 mb-3">4.3 Legal Requirements</h4>
+                <p class="leading-relaxed">
+                  We may disclose information if required by law, court order, or governmental authority, or to protect our rights, property, or safety, or that of our users.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.5s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  5. Data Storage and Security
+                </h3>
+                <p class="leading-relaxed mb-4">
+                  We implement appropriate technical and organizational measures to protect your information:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                  <li>Encryption of sensitive data in transit and at rest</li>
+                  <li>Secure authentication using wallet signatures</li>
+                  <li>Regular security audits and updates</li>
+                  <li>Access controls and monitoring</li>
+                </ul>
+                <p class="leading-relaxed mt-4">
+                  However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.6s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  6. Your Rights and Choices
+                </h3>
+                <p class="leading-relaxed mb-4">
+                  You have certain rights regarding your information:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                  <li><strong>Access:</strong> Request access to your personal information</li>
+                  <li><strong>Correction:</strong> Request correction of inaccurate information</li>
+                  <li><strong>Deletion:</strong> Request deletion of your information (subject to blockchain immutability)</li>
+                  <li><strong>Portability:</strong> Request a copy of your data in a portable format</li>
+                  <li><strong>Opt-out:</strong> Opt out of certain data processing activities</li>
+                </ul>
+                <p class="leading-relaxed mt-4">
+                  To exercise these rights, please contact us at the email address provided below. Note that information stored on the blockchain cannot be deleted due to its immutable nature.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.7s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  7. Third-Party Services
+                </h3>
+                <p class="leading-relaxed">
+                  Our services integrate with third-party services, including:
+                </p>
+                <ul class="list-disc list-inside ml-4 mt-2 space-y-2">
+                  <li>Solana blockchain and wallet providers</li>
+                  <li>OpenAI (ChatGPT API)</li>
+                  <li>IPFS storage networks</li>
+                  <li>Google Analytics (for website analytics)</li>
+                </ul>
+                <p class="leading-relaxed mt-4">
+                  These third parties have their own privacy policies. We encourage you to review their policies to understand how they handle your information.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.8s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  8. Children's Privacy
+                </h3>
+                <p class="leading-relaxed">
+                  DOCCA is not intended for users under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 0.9s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  9. International Data Transfers
+                </h3>
+                <p class="leading-relaxed">
+                  Your information may be transferred to and processed in countries other than your country of residence. These countries may have data protection laws that differ from those in your country. By using DOCCA, you consent to the transfer of your information to these countries.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 1s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  10. Changes to This Privacy Policy
+                </h3>
+                <p class="leading-relaxed">
+                  We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.
+                </p>
+              </section>
+
+              <section class="animate-fadeInUp" style="animation-delay: 1.1s">
+                <h3 class="text-2xl font-bold text-white mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-violet-300">
+                  11. Contact Us
+                </h3>
+                <p class="leading-relaxed">
+                  If you have any questions about this Privacy Policy or our data practices, please contact us at:
+                </p>
+                <p class="leading-relaxed mt-4">
+                  <strong>Email:</strong> privacy@docca.ai<br>
+                  <strong>Website:</strong> <a href="https://docca.ai" class="text-purple-400 hover:text-purple-300 underline">https://docca.ai</a>
+                </p>
+              </section>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="text-center mt-12 space-x-6 animate-fadeInUp" style="animation-delay: 1.2s">
+        <a href="/" class="text-purple-400 hover:text-purple-300 transition-colors">Home</a>
+        <span class="text-purple-500">|</span>
+        <a href="/terms-of-use.html" class="text-purple-400 hover:text-purple-300 transition-colors">Terms of Use</a>
+        <span class="text-purple-500">|</span>
+        <a href="/privacy-policy.html" class="text-purple-300 font-semibold">Privacy Policy</a>
+      </div>
+    </div>
+
+    <script>
+      // Set last updated date
+      document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      
+      // Dynamic gradient overlay
+      const gradientOverlay = document.getElementById('gradientOverlay');
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        gradientOverlay.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(139, 92, 246, 0.3) 0%, rgba(79, 70, 229, 0.2) 25%, transparent 50%)`;
+      });
+    </script>
+  </body>
+</html>
+
