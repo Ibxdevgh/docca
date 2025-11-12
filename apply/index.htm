@@ -41,23 +41,25 @@
           textNodes.forEach(({ textNode, parent }) => {
             const fullText = textNode.textContent;
             // Match: "By applying, you agree to our terms and privacy policy"
-            // Capture groups: (before) (agree to our ) (terms) (and/&) (privacy policy) (after)
-            // Handle cases where "and" might be attached to "policy" (e.g., "policyand")
-            const match = fullText.match(/(.*?)(agree\s+(to|with)\s+our\s+)(terms)(\s+(and|&)\s+)(privacy\s+policy)(and.*?|.*)/i);
+            // We want to match the entire phrase and replace it completely
+            // Pattern: (everything before) (agree to our terms and privacy policy) (everything after)
+            const match = fullText.match(/(.*?)(agree\s+(to|with)\s+our\s+terms\s+(and|&)\s+privacy\s+policy)(.*)/i);
             
             if (match) {
               const beforeText = match[1];
-              const agreeText = match[2];
-              const afterText = match[7]; // Text after "privacy policy"
+              const afterText = match[4]; // Text after the entire phrase
               
-              // Clean up afterText - remove any trailing "and" that might be there
+              // Clean up afterText - remove any duplicate "privacy policy", "terms", or "and"
               let cleanAfterText = afterText || '';
-              // Remove leading/trailing whitespace
               cleanAfterText = cleanAfterText.trim();
-              // Remove "and" if it appears at the start (handles both " and" and "and")
+              
+              // Remove "and" if it appears at the start
               if (cleanAfterText.toLowerCase().startsWith('and')) {
                 cleanAfterText = cleanAfterText.substring(3).trim();
               }
+              
+              // Remove any duplicate "privacy policy" or "terms" that might be in afterText
+              cleanAfterText = cleanAfterText.replace(/\b(privacy\s+policy|terms(\s+of\s+use)?)\b/gi, '').trim();
               
               // Create document fragment with proper structure
               const fragment = document.createDocumentFragment();
@@ -68,7 +70,7 @@
               }
               
               // Add "agree to our "
-              fragment.appendChild(document.createTextNode(agreeText));
+              fragment.appendChild(document.createTextNode('agree to our '));
               
               // Create Terms of Use link
               const termsLink = document.createElement('a');
@@ -95,8 +97,8 @@
               privacyLink.onmouseout = () => privacyLink.style.color = 'rgb(167, 139, 250)';
               fragment.appendChild(privacyLink);
               
-              // Add text after (cleaned)
-              if (cleanAfterText) {
+              // Only add afterText if it doesn't contain policy-related terms
+              if (cleanAfterText && !cleanAfterText.match(/\b(privacy|policy|terms)\b/i)) {
                 fragment.appendChild(document.createTextNode(cleanAfterText));
               }
               
