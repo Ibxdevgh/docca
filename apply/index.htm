@@ -27,75 +27,85 @@
           return link;
         }
         
-        function injectPolicyLinks() {
-          // Look for text containing terms/privacy references
-          const allElements = document.querySelectorAll('*');
+        // function injectPolicyLinks() {
+        //   // Look for text containing terms/privacy references
+        //   const allElements = document.querySelectorAll('*');
           
-          allElements.forEach(element => {
-            if (processedElements.has(element)) return;
-            if (element.querySelector('a[href*="terms"], a[href*="privacy"]')) {
-              processedElements.add(element);
-              return;
-            }
+        //   allElements.forEach(element => {
+        //     if (processedElements.has(element)) return;
+        //     if (element.querySelector('a[href*="terms"], a[href*="privacy"]')) {
+        //       processedElements.add(element);
+        //       return;
+        //     }
             
-            const text = element.textContent || '';
-            const innerHTML = element.innerHTML || '';
+        //     const text = element.textContent || '';
+        //     const innerHTML = element.innerHTML || '';
             
-            // Check if element contains terms/privacy text
-            if (text.match(/\b(terms|privacy|agree)\b/i)) {
+        //     // Skip if already contains links
+        //     if (innerHTML.includes('href="/terms-of-use.html"') || innerHTML.includes('href="/privacy-policy.html"')) {
+        //       processedElements.add(element);
+        //       return;
+        //     }
+            
+        //     // Check if element contains terms/privacy text
+        //     if (text.match(/\b(terms|privacy|agree)\b/i)) {
               
-              // Try to replace common patterns
-              let updated = innerHTML;
-              let changed = false;
+        //       let updated = innerHTML;
+        //       const originalUpdated = updated;
               
-              // Pattern 1: "terms and privacy policy" or "terms & privacy"
-              if (text.match(/terms.*(and|&).*privacy/i)) {
-                updated = updated.replace(
-                  /\bterms\b(.*?)\bprivacy\s*policy\b/gi,
-                  '<a href="/terms-of-use.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Terms of Use</a>$1<a href="/privacy-policy.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Privacy Policy</a>'
-                );
-                changed = true;
-              }
+        //       // Define link styles
+        //       const linkStyle = 'color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;';
+        //       const linkHover = 'onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'"';
               
-              // Pattern 2: "terms of use" standalone
-              if (text.match(/\bterms\s*(of\s*use)?\b/i) && !innerHTML.includes('href="/terms-of-use.html"')) {
-                updated = updated.replace(
-                  /\bterms\s*(of\s*use)?\b/gi,
-                  '<a href="/terms-of-use.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Terms of Use</a>'
-                );
-                changed = true;
-              }
+        //       // Pattern 1: "agree to our terms and privacy policy" (most specific - check first)
+        //       if (text.match(/agree.*(to|with).*our.*terms.*(and|&).*privacy.*policy/i)) {
+        //         updated = updated.replace(
+        //           /\bagree\s+(to|with)\s+our\s+terms\s+(and|&)\s+privacy\s+policy/gi,
+        //           function(match) {
+        //             return 'agree to our <a href="/terms-of-use.html" style="' + linkStyle + '" ' + linkHover + '>Terms of Use</a> and <a href="/privacy-policy.html" style="' + linkStyle + '" ' + linkHover + '>Privacy Policy</a>';
+        //           }
+        //         );
+        //       }
+        //       // Pattern 2: "terms and privacy policy" or "terms & privacy policy"
+        //       else if (text.match(/terms.*(and|&).*privacy.*policy/i)) {
+        //         updated = updated.replace(
+        //           /\bterms\s+(and|&)\s+privacy\s+policy/gi,
+        //           function(match) {
+        //             return '<a href="/terms-of-use.html" style="' + linkStyle + '" ' + linkHover + '>Terms of Use</a> and <a href="/privacy-policy.html" style="' + linkStyle + '" ' + linkHover + '>Privacy Policy</a>';
+        //           }
+        //         );
+        //       }
+        //       // Pattern 3: "privacy policy" standalone (check before "terms" to avoid conflicts)
+        //       else if (text.match(/\bprivacy\s+policy\b/i) && !updated.includes('href="/privacy-policy.html"')) {
+        //         updated = updated.replace(
+        //           /\bprivacy\s+policy\b/gi,
+        //           function(match) {
+        //             return '<a href="/privacy-policy.html" style="' + linkStyle + '" ' + linkHover + '>Privacy Policy</a>';
+        //           }
+        //         );
+        //       }
+        //       // Pattern 4: "terms of use" or just "terms" (check last to avoid conflicts)
+        //       else if (text.match(/\bterms(\s+of\s+use)?\b/i) && !updated.includes('href="/terms-of-use.html"')) {
+        //         updated = updated.replace(
+        //           /\bterms(\s+of\s+use)?\b/gi,
+        //           function(match) {
+        //             return '<a href="/terms-of-use.html" style="' + linkStyle + '" ' + linkHover + '>Terms of Use</a>';
+        //           }
+        //         );
+        //       }
               
-              // Pattern 3: "privacy policy" standalone
-              if (text.match(/\bprivacy\s*policy\b/i) && !innerHTML.includes('href="/privacy-policy.html"')) {
-                updated = updated.replace(
-                  /\bprivacy\s*policy\b/gi,
-                  '<a href="/privacy-policy.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Privacy Policy</a>'
-                );
-                changed = true;
-              }
-              
-              // Pattern 4: "agree to our terms and privacy policy"
-              if (text.match(/agree.*(to|with).*terms.*privacy/i)) {
-                updated = updated.replace(
-                  /\bagree\s+(to|with)\s+our\s+terms\s+(and|&)\s+privacy\s+policy/gi,
-                  'agree to our <a href="/terms-of-use.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Terms of Use</a> and <a href="/privacy-policy.html" style="color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'">Privacy Policy</a>'
-                );
-                changed = true;
-              }
-              
-              if (changed && updated !== innerHTML) {
-                element.innerHTML = updated;
-                processedElements.add(element);
+        //       if (updated !== originalUpdated) {
+        //         element.innerHTML = updated;
+        //         processedElements.add(element);
                 
-              }
-            }
-          });
-        }
+        //       }
+        //     }
+        //   });
+        // }
         
         // Use MutationObserver to watch for DOM changes (React hydration)
         const observer = new MutationObserver(() => {
-          injectPolicyLinks();
+          // injectPolicyLinks();
         });
         
         
