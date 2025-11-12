@@ -15,97 +15,90 @@
       (function() {
         const processedElements = new WeakSet();
         
-        function createLink(text, href) {
-          const link = document.createElement('a');
-          link.href = href;
-          link.textContent = text;
-          link.style.color = 'rgb(167, 139, 250)'; // purple-400
-          link.style.textDecoration = 'underline';
-          link.style.transition = 'color 0.2s';
-          link.onmouseover = () => link.style.color = 'rgb(192, 132, 252)'; // purple-300
-          link.onmouseout = () => link.style.color = 'rgb(167, 139, 250)'; // purple-400
-          return link;
-        }
-        
-        // function injectPolicyLinks() {
-        //   // Look for text containing terms/privacy references
-        //   const allElements = document.querySelectorAll('*');
+        function injectPolicyLinks() {
+          // Find text nodes containing "agree to our terms and privacy policy"
+          const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+          );
           
-        //   allElements.forEach(element => {
-        //     if (processedElements.has(element)) return;
-        //     if (element.querySelector('a[href*="terms"], a[href*="privacy"]')) {
-        //       processedElements.add(element);
-        //       return;
-        //     }
+          const textNodes = [];
+          let node;
+          while (node = walker.nextNode()) {
+            const text = node.textContent;
+            // Look for the pattern "agree to our terms and privacy policy"
+            if (text && /agree.*(to|with).*our.*terms.*(and|&).*privacy/i.test(text)) {
+              const parent = node.parentElement;
+              // Skip if already processed or already has links
+              if (!processedElements.has(parent) && !parent.querySelector('a[href*="terms"], a[href*="privacy"]')) {
+                textNodes.push({ textNode: node, parent: parent });
+              }
+            }
+          }
+          
+          textNodes.forEach(({ textNode, parent }) => {
+            const fullText = textNode.textContent;
+            // Match: "By applying, you agree to our terms and privacy policy"
+            const match = fullText.match(/(.*?)(agree\s+(to|with)\s+our\s+)(terms\s+(and|&)\s+privacy\s+policy)(.*)/i);
             
-        //     const text = element.textContent || '';
-        //     const innerHTML = element.innerHTML || '';
-            
-        //     // Skip if already contains links
-        //     if (innerHTML.includes('href="/terms-of-use.html"') || innerHTML.includes('href="/privacy-policy.html"')) {
-        //       processedElements.add(element);
-        //       return;
-        //     }
-            
-        //     // Check if element contains terms/privacy text
-        //     if (text.match(/\b(terms|privacy|agree)\b/i)) {
+            if (match) {
+              const beforeText = match[1];
+              const agreeText = match[2];
+              const afterText = match[5];
               
-        //       let updated = innerHTML;
-        //       const originalUpdated = updated;
+              // Create document fragment with proper structure
+              const fragment = document.createDocumentFragment();
               
-        //       // Define link styles
-        //       const linkStyle = 'color: rgb(167, 139, 250); text-decoration: underline; transition: color 0.2s;';
-        //       const linkHover = 'onmouseover="this.style.color=\'rgb(192, 132, 252)\'" onmouseout="this.style.color=\'rgb(167, 139, 250)\'"';
+              // Add text before "agree"
+              if (beforeText) {
+                fragment.appendChild(document.createTextNode(beforeText));
+              }
               
-        //       // Pattern 1: "agree to our terms and privacy policy" (most specific - check first)
-        //       if (text.match(/agree.*(to|with).*our.*terms.*(and|&).*privacy.*policy/i)) {
-        //         updated = updated.replace(
-        //           /\bagree\s+(to|with)\s+our\s+terms\s+(and|&)\s+privacy\s+policy/gi,
-        //           function(match) {
-        //             return 'agree to our <a href="/terms-of-use.html" style="' + linkStyle + '" ' + linkHover + '>Terms of Use</a> and <a href="/privacy-policy.html" style="' + linkStyle + '" ' + linkHover + '>Privacy Policy</a>';
-        //           }
-        //         );
-        //       }
-        //       // Pattern 2: "terms and privacy policy" or "terms & privacy policy"
-        //       else if (text.match(/terms.*(and|&).*privacy.*policy/i)) {
-        //         updated = updated.replace(
-        //           /\bterms\s+(and|&)\s+privacy\s+policy/gi,
-        //           function(match) {
-        //             return '<a href="/terms-of-use.html" style="' + linkStyle + '" ' + linkHover + '>Terms of Use</a> and <a href="/privacy-policy.html" style="' + linkStyle + '" ' + linkHover + '>Privacy Policy</a>';
-        //           }
-        //         );
-        //       }
-        //       // Pattern 3: "privacy policy" standalone (check before "terms" to avoid conflicts)
-        //       else if (text.match(/\bprivacy\s+policy\b/i) && !updated.includes('href="/privacy-policy.html"')) {
-        //         updated = updated.replace(
-        //           /\bprivacy\s+policy\b/gi,
-        //           function(match) {
-        //             return '<a href="/privacy-policy.html" style="' + linkStyle + '" ' + linkHover + '>Privacy Policy</a>';
-        //           }
-        //         );
-        //       }
-        //       // Pattern 4: "terms of use" or just "terms" (check last to avoid conflicts)
-        //       else if (text.match(/\bterms(\s+of\s+use)?\b/i) && !updated.includes('href="/terms-of-use.html"')) {
-        //         updated = updated.replace(
-        //           /\bterms(\s+of\s+use)?\b/gi,
-        //           function(match) {
-        //             return '<a href="/terms-of-use.html" style="' + linkStyle + '" ' + linkHover + '>Terms of Use</a>';
-        //           }
-        //         );
-        //       }
+              // Add "agree to our "
+              fragment.appendChild(document.createTextNode(agreeText));
               
-        //       if (updated !== originalUpdated) {
-        //         element.innerHTML = updated;
-        //         processedElements.add(element);
-                
-        //       }
-        //     }
-        //   });
-        // }
+              // Create Terms of Use link
+              const termsLink = document.createElement('a');
+              termsLink.href = '/terms-of-use.html';
+              termsLink.textContent = 'Terms of Use';
+              termsLink.style.color = 'rgb(167, 139, 250)';
+              termsLink.style.textDecoration = 'underline';
+              termsLink.style.transition = 'color 0.2s';
+              termsLink.onmouseover = () => termsLink.style.color = 'rgb(192, 132, 252)';
+              termsLink.onmouseout = () => termsLink.style.color = 'rgb(167, 139, 250)';
+              fragment.appendChild(termsLink);
+              
+              // Add " and "
+              fragment.appendChild(document.createTextNode(' and '));
+              
+              // Create Privacy Policy link
+              const privacyLink = document.createElement('a');
+              privacyLink.href = '/privacy-policy.html';
+              privacyLink.textContent = 'Privacy Policy';
+              privacyLink.style.color = 'rgb(167, 139, 250)';
+              privacyLink.style.textDecoration = 'underline';
+              privacyLink.style.transition = 'color 0.2s';
+              privacyLink.onmouseover = () => privacyLink.style.color = 'rgb(192, 132, 252)';
+              privacyLink.onmouseout = () => privacyLink.style.color = 'rgb(167, 139, 250)';
+              fragment.appendChild(privacyLink);
+              
+              // Add text after
+              if (afterText) {
+                fragment.appendChild(document.createTextNode(afterText));
+              }
+              
+              // Replace the text node with the fragment
+              parent.replaceChild(fragment, textNode);
+              processedElements.add(parent);
+            }
+          });
+        }
         
         // Use MutationObserver to watch for DOM changes (React hydration)
         const observer = new MutationObserver(() => {
-          // injectPolicyLinks();
+          injectPolicyLinks();
         });
         
         
