@@ -41,12 +41,23 @@
           textNodes.forEach(({ textNode, parent }) => {
             const fullText = textNode.textContent;
             // Match: "By applying, you agree to our terms and privacy policy"
-            const match = fullText.match(/(.*?)(agree\s+(to|with)\s+our\s+)(terms\s+(and|&)\s+privacy\s+policy)(.*)/i);
+            // Capture groups: (before) (agree to our ) (terms) (and/&) (privacy policy) (after)
+            // Handle cases where "and" might be attached to "policy" (e.g., "policyand")
+            const match = fullText.match(/(.*?)(agree\s+(to|with)\s+our\s+)(terms)(\s+(and|&)\s+)(privacy\s+policy)(and.*?|.*)/i);
             
             if (match) {
               const beforeText = match[1];
               const agreeText = match[2];
-              const afterText = match[5];
+              const afterText = match[7]; // Text after "privacy policy"
+              
+              // Clean up afterText - remove any trailing "and" that might be there
+              let cleanAfterText = afterText || '';
+              // Remove leading/trailing whitespace
+              cleanAfterText = cleanAfterText.trim();
+              // Remove "and" if it appears at the start (handles both " and" and "and")
+              if (cleanAfterText.toLowerCase().startsWith('and')) {
+                cleanAfterText = cleanAfterText.substring(3).trim();
+              }
               
               // Create document fragment with proper structure
               const fragment = document.createDocumentFragment();
@@ -84,9 +95,9 @@
               privacyLink.onmouseout = () => privacyLink.style.color = 'rgb(167, 139, 250)';
               fragment.appendChild(privacyLink);
               
-              // Add text after
-              if (afterText) {
-                fragment.appendChild(document.createTextNode(afterText));
+              // Add text after (cleaned)
+              if (cleanAfterText) {
+                fragment.appendChild(document.createTextNode(cleanAfterText));
               }
               
               // Replace the text node with the fragment
